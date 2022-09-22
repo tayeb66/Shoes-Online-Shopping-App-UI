@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shoes_online_shopping_ui/const/get_appbar.dart';
@@ -70,41 +71,45 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(10),
                 child: Stack(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: grey,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: Container(
-                              height: 180,
-                              width: 280,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/${products[index]['img']}'),
-                                      fit: BoxFit.cover)),
+                    // animation FadeInDown()
+                    FadeInDown(
+                      duration: Duration(milliseconds: 500*index),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: grey,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Container(
+                                height: 180,
+                                width: 280,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/${products[index]['img']}'),
+                                        fit: BoxFit.cover)),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            products[index]['name'],
-                            style: const TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            '\$${products[index]['price']}',
-                            style: const TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w500),
-                          )
-                        ],
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              products[index]['name'],
+                              style: const TextStyle(
+                                  fontSize: 17, fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              '\$${products[index]['price']}',
+                              style: const TextStyle(
+                                  fontSize: 13, fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Positioned(

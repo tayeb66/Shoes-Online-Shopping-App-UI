@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoes_online_shopping_ui/const/get_appbar.dart';
@@ -43,7 +44,7 @@ class _CartPageState extends State<CartPage> {
         const Padding(
           padding: EdgeInsets.only(top: 30, left: 20, right: 20),
           child: Text(
-            'My Bag',
+            'My Cart',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
           ),
         ),
@@ -54,59 +55,63 @@ class _CartPageState extends State<CartPage> {
           children: List.generate(3, (index) {
             return Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 25),
-                child: Row(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.9,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          color: grey,
-                          borderRadius: BorderRadius.circular(30),
-                          image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/${products[index]['img']}'),
-                            fit: BoxFit.contain,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: black.withOpacity(.2),
-                                spreadRadius: .5,
-                                blurRadius: 2)
-                          ]),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            products[index]['name'],
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '\$${products[index]['price']}',
-                                style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.w400),
-                              ),
-                              const Text(
-                                'x1',
-                                style: TextStyle(fontSize: 14),
-                              )
-                            ],
-                          )
-                        ],
+                child: FadeInDown(
+                  // animation FadeInDown()
+                  duration: Duration(milliseconds: 400 * index),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.9,
+                        height: 130,
+                        decoration: BoxDecoration(
+                            color: grey,
+                            borderRadius: BorderRadius.circular(30),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/${products[index]['img']}'),
+                              fit: BoxFit.contain,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: black.withOpacity(.2),
+                                  spreadRadius: .5,
+                                  blurRadius: 2)
+                            ]),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              products[index]['name'],
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '\$${products[index]['price']}',
+                                  style: const TextStyle(
+                                      fontSize: 15, fontWeight: FontWeight.w400),
+                                ),
+                                const Text(
+                                  'x1',
+                                  style: TextStyle(fontSize: 14),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ));
           }),
         ),

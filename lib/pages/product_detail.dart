@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shoes_online_shopping_ui/const/product_data.dart';
@@ -39,31 +40,35 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget getBody() {
     return Column(
       children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              color: grey,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                    color: black.withOpacity(.2),
-                    blurRadius: 2,
-                    spreadRadius: 1)
-              ]),
-          child: Stack(
-            children: [
-              ProductSlider(
-                items: widget.multiImage,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.arrow_back_ios)),
-              ),
-            ],
+        FadeInDown(
+          // animation FadeInDown()
+          duration: Duration(milliseconds: 400),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                color: grey,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                      color: black.withOpacity(.2),
+                      blurRadius: 2,
+                      spreadRadius: 1)
+                ]),
+            child: Stack(
+              children: [
+                ProductSlider(
+                  items: widget.multiImage,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back_ios)),
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(

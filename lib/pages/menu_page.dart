@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_online_shopping_ui/theme/colors.dart';
+import 'package:animate_do/animate_do.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -42,10 +43,14 @@ class _MenuPageState extends State<MenuPage> {
           children: List.generate(menuItems.length, (index) {
             return Padding(
               padding: const EdgeInsets.only(left: 30, bottom: 30, right: 30),
-              child: Text(
-                menuItems[index],
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              // animation ElasticIn()
+              child: ElasticIn(
+                duration: Duration(milliseconds: 500*index),
+                child: Text(
+                  menuItems[index],
+                  style:
+                      const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
               ),
             );
           }),
