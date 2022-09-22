@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shoes_online_shopping_ui/const/get_appbar.dart';
 import 'package:shoes_online_shopping_ui/const/product_data.dart';
+import 'package:shoes_online_shopping_ui/pages/product_detail.dart';
 
 import '../theme/colors.dart';
 
@@ -53,8 +54,17 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: List.generate(products.length, (index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductDetail(
+                      productName: products[index]['name'],
+                      productImage: products[index]['img'],
+                      productId: products[index]['id'].toString(),
+                      productPrice: products[index]['price'],
+                      productSize: products[index]['sizes'],
+                      multiImage: products[index]['mul_img'],
 
+                    )));
               },
               child: Padding(
                 padding: const EdgeInsets.all(10),
